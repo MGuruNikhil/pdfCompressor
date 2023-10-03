@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import PDFUploadForm
 from .models import CompressedPDF
+from django.conf import settings
 import PyPDF2
 import os
 
@@ -22,7 +23,16 @@ def index(request):
         if form.is_valid():
             original_pdf = form.cleaned_data['original_pdf']
             compressed_pdf = compress_pdf(original_pdf)
-            compressed_pdf_path = 'compressed/' + original_pdf.name
+            compressed_pdf_name = 'compressed_' + original_pdf.name
+
+            # Define the target directory for compressed PDFs
+            target_directory = os.path.join(settings.MEDIA_ROOT, 'compressed')
+
+            # Create the target directory if it doesn't exist
+            os.makedirs(target_directory, exist_ok=True)
+
+            # Create the full path for the compressed PDF
+            compressed_pdf_path = os.path.join(target_directory, compressed_pdf_name)
 
             with open(compressed_pdf_path, 'wb') as output_file:
                 compressed_pdf.write(output_file)
@@ -32,7 +42,9 @@ def index(request):
             return redirect('download', pk=instance.pk)
     else:
         form = PDFUploadForm()
-    return render(request, 'compressor/index.html', {'form': form})
+    
+    compressed_pdf = None
+    return render(request, 'compressor/index.html', {'form': form, 'compressed_pdf': compressed_pdf})
 
 def download_compressed_pdf(request, pk):
     compressed_pdf = CompressedPDF.objects.get(pk=pk)
