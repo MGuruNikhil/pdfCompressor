@@ -7,6 +7,9 @@
     <h1>pdf compressor</h1>
     <form method="POST" action="/compress" enctype="multipart/form-data">
         <input type="file" name="file" accept=".pdf" required>
+        <br>
+        output filename: <input type="text" name="output_name" required>.pdf
+        <br>
         <input type="submit" value="compress pdf">
     </form>
 </body>
