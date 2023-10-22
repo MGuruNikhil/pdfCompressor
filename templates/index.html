@@ -1,16 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pdf compressor</title>
+    <link rel="shortcut icon" href="https://aquaticcalf.github.io/sam.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://aquaticcalf.github.io/comic.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>pdf compressor</h1>
-    <form method="POST" action="/compress" enctype="multipart/form-data">
-        <input type="file" name="file" accept=".pdf" required>
-        <br>
-        output filename: <input type="text" name="output_name" required>.pdf
-        <br>
-        <input type="submit" value="compress pdf">
-    </form>
+<body class="bg-black text-white min-h-screen flex flex-col">
+    <div class="text-4xl text-center m-5 mb-3">pdf compressor</div>
+    <hr class="m-5 border-[#3f3f41]">
+    <div class="grow flex flex-col justify-center place-items-center">
+        <form method="POST" action="/compress" enctype="multipart/form-data" class="flex flex-col p-5 border place-items-center rounded-xl border border-[#ffb3ff]">
+            <input class="m-2 place-self-start" type="file" name="file" accept=".pdf" required>
+            <div class="m-2 place-self-start">
+                output filename: <input type="text" name="output_name" class="p-2 rounded-xl border border-[#ffb3ff] px-3 text-sm font-medium bg-gray-900 text-white" required> . pdf
+            </div>
+            <input class="bg-gray-900 rounded-xl p-2 max-w-[200px] m-auto hover:cursor-pointer" type="submit" value="compress pdf">
+        </form>
+    </div>
 </body>
 </html>
