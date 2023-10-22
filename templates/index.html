@@ -13,7 +13,7 @@
     <hr class="m-5 border-[#3f3f41]">
     <div class="grow flex flex-col justify-center place-items-center">
         <form method="POST" action="/compress" enctype="multipart/form-data" class="flex flex-col p-5 border place-items-center rounded-xl border border-[#ffb3ff] m-5">
-            <input class="m-2 place-self-start" type="file" name="file" accept=".pdf" required>
+            <input class="m-2 place-self-start" id="pdf" type="file" name="file" accept=".pdf" required>
             <div class="p-2 place-self-start flex gap-2 justify-center">
                 output filename: 
                 <span class="flex rounded-xl border border-[#ffb3ff]">
@@ -26,5 +26,19 @@
             <input class="bg-gray-900 rounded-xl p-2 max-w-[200px] m-auto hover:cursor-pointer" type="submit" value="compress pdf">
         </form>
     </div>
+    <script>
+        const pdfinpu = document.getElementById('pdf');
+
+        pdfinpu.addEventListener('change', function () {
+        const file = pdfinpu.files[0]
+        if (file) {
+            const allowed = ["application/pdf"]
+            if (!allowed.includes(file.type)) {
+            alert("only pdf files allowed!")
+            fileInput.value = ''
+            }
+        }})
+
+    </script>
 </body>
 </html>
