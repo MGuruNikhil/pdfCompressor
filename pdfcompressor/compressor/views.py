@@ -1,7 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import PDFUploadForm
-from django.conf import settings
 import PyPDF2
 import io
 
@@ -22,10 +21,14 @@ def index(request):
         if form.is_valid():
             original_pdf = form.cleaned_data['original_pdf']
             compressed_pdf = compress_pdf(original_pdf)
+            compressed_pdf_name = form.cleaned_data.get('compressed_pdf_name', 'compressed.pdf')
+
+            if compressed_pdf_name[-4:] != ".pdf":
+                compressed_pdf_name += ".pdf"
 
             # Create the response to serve the compressed PDF
             response = HttpResponse(content_type='application/pdf')
-            response['Content-Disposition'] = 'attachment; filename="compressed.pdf"'
+            response['Content-Disposition'] = f'attachment; filename="{compressed_pdf_name}"'
 
             # Write the compressed PDF content to the response
             output_pdf_stream = io.BytesIO()
