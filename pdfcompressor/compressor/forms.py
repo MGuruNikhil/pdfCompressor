@@ -1,7 +1,4 @@
 from django import forms
-from .models import CompressedPDF
 
-class PDFUploadForm(forms.ModelForm):
-    class Meta:
-        model = CompressedPDF
-        fields = ['original_pdf']
+class PDFUploadForm(forms.Form):
+    original_pdf = forms.FileField(label="Choose a PDF file")
