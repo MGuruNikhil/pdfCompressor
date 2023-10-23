@@ -1,0 +1,22 @@
+/* Apply dark theme to the entire page */
+body {
+    background-color: #121212; /* Dark background color */
+    color: #ffffff; /* Light text color */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 100% viewport height */
+}
+
+/* Override Bootstrap styles for form elements */
+.form-control {
+    background-color: #1a1a1a; /* Dark form field background */
+    color: #ffffff; /* Light text color */
+}
+
+.btn {
+    background-color: #343a40; /* Dark button background color */
+    border-color: #343a40; /* Dark border color */
+    color: #ffffff; /* Light text color */
+}
