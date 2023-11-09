@@ -26,8 +26,7 @@ SECRET_KEY = 'django-insecure-4ypc34h=8km%@425+p!e7b1kj$kl$##u3(xv)&#@@+srj0lgfv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 
 # Application definition
 
@@ -69,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'pdfcompressor.wsgi.application'
+WSGI_APPLICATION = 'pdfcompressor.wsgi.app'
 
 
 # Database
