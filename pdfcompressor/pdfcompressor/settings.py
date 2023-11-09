@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'pdfcompressor.wsgi.app'
+WSGI_APPLICATION = 'pdfcompressor.wsgi.application'
 
 
 # Database
