@@ -4,7 +4,7 @@
             "src": "pdfcompressor/wsgi.py",
             "use": "@vercel/python",
             "config": {
-                "maxLambdaSize": "15mb",
+                "maxLambdaSize": "100mb",
                 "runtime": "python3.10"
             }
         }
